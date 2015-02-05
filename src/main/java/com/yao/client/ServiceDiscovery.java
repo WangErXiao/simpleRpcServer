@@ -17,31 +17,20 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by root on 15-2-5.
  */
-@Component
-public class ServiceDiscovery {
+public class ServiceDiscovery implements  Runnable{
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceDiscovery.class);
 
     private CountDownLatch latch = new CountDownLatch(1);
 
     private volatile List<String> dataList = new ArrayList<String>();
 
-    @Value("${registry.address}")
     private String registryAddress;
 
-    public ServiceDiscovery(){
-        ZooKeeper zk = connectServer();
-        if (zk != null) {
-            watchNode(zk);
-        }
-    }
     public ServiceDiscovery(String registryAddress) {
         this.registryAddress = registryAddress;
 
-        ZooKeeper zk = connectServer();
-        if (zk != null) {
-            watchNode(zk);
-        }
     }
+
 
     public String discover() {
         String data = null;
@@ -95,6 +84,14 @@ public class ServiceDiscovery {
             this.dataList = dataList;
         } catch (Exception e) {
             LOGGER.error("", e);
+        }
+    }
+
+    @Override
+    public void run() {
+        ZooKeeper zk = connectServer();
+        if (zk != null) {
+            watchNode(zk);
         }
     }
 }

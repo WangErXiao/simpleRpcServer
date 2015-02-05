@@ -19,19 +19,20 @@ public class RpcProxy {
     @Value("${server.address}")
     private String serverAddress;
 
-    @Autowired
-    private ServiceDiscovery serviceDiscovery;
+  /*  @Autowired
+    private ServiceDiscovery serviceDiscovery;*/
 
     public RpcProxy(){};
 
-    public RpcProxy(String serverAddress) {
+   /* public RpcProxy(String serverAddress,ServiceDiscovery serviceDiscovery) {
         this.serverAddress = serverAddress;
+        this.serviceDiscovery = serviceDiscovery;
     }
 
     public RpcProxy(ServiceDiscovery serviceDiscovery) {
         this.serviceDiscovery = serviceDiscovery;
     }
-
+*/
     @SuppressWarnings("unchecked")
     public <T> T create(Class<?> interfaceClass) {
         return (T) Proxy.newProxyInstance(
@@ -47,9 +48,7 @@ public class RpcProxy {
                         request.setParameterTypes(method.getParameterTypes());
                         request.setParameters(args);
 
-                       /* if (serviceDiscovery != null) {
-                            serviceDiscovery = serviceDiscovery.discover(); // 发现服务
-                        }*/
+
 
 
                         String[] array = serverAddress.split(":");
