@@ -1,6 +1,7 @@
-package com.yao.server;
+package com.yao.client;
 
-import com.yao.registry.ServiceDiscovery;
+import com.yao.share.model.RpcRequest;
+import com.yao.share.model.RpcResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,8 @@ public class RpcProxy {
 
     @Autowired
     private ServiceDiscovery serviceDiscovery;
+
+    public RpcProxy(){};
 
     public RpcProxy(String serverAddress) {
         this.serverAddress = serverAddress;
@@ -44,9 +47,10 @@ public class RpcProxy {
                         request.setParameterTypes(method.getParameterTypes());
                         request.setParameters(args);
 
-                        if (serviceDiscovery != null) {
-                            serverAddress = serviceDiscovery.discover(); // 发现服务
-                        }
+                       /* if (serviceDiscovery != null) {
+                            serviceDiscovery = serviceDiscovery.discover(); // 发现服务
+                        }*/
+
 
                         String[] array = serverAddress.split(":");
                         String host = array[0];

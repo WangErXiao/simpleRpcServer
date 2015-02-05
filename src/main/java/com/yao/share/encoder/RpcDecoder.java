@@ -1,4 +1,4 @@
-package com.yao.server;
+package com.yao.share.encoder;
 
 import com.yao.utils.SerializationUtil;
 import io.netty.buffer.ByteBuf;

@@ -1,4 +1,4 @@
-package com.yao.registry;
+package com.yao.client;
 
 import com.yao.utils.Constant;
 import org.apache.zookeeper.WatchedEvent;

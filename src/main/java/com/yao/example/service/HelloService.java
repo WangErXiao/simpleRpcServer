@@ -1,4 +1,4 @@
-package com.yao.service;
+package com.yao.example.service;
 
 /**
  * Created by root on 15-2-5.

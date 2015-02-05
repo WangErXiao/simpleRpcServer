@@ -1,7 +1,12 @@
 package com.yao.server;
 
-import com.yao.annotation.RpcService;
-import com.yao.registry.ServiceRegistry;
+import com.yao.server.handler.RpcHandler;
+import com.yao.share.annotation.RpcService;
+import com.yao.server.registry.ServiceRegistry;
+import com.yao.share.encoder.RpcDecoder;
+import com.yao.share.encoder.RpcEncoder;
+import com.yao.share.model.RpcRequest;
+import com.yao.share.model.RpcResponse;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -27,8 +32,10 @@ import java.util.Map;
 /**
  * Created by root on 15-2-5.
  */
+
 @Component
 public class RpcServer implements ApplicationContextAware, InitializingBean {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcServer.class);
 
     @Value("${server.address}")
@@ -40,6 +47,10 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     // 存放接口名与服务对象之间的映射关系
 
     private Map<String, Object> handlerMap = new HashMap<String, Object>();
+
+    public RpcServer(){
+
+    }
 
     public RpcServer(String serverAddress) {
         this.serverAddress = serverAddress;

@@ -1,4 +1,4 @@
-package com.yao.registry;
+package com.yao.server.registry;
 
 import com.yao.utils.Constant;
 import org.apache.zookeeper.*;
@@ -25,6 +25,9 @@ public class ServiceRegistry {
 
     public ServiceRegistry(String registryAddress) {
         this.registryAddress = registryAddress;
+    }
+    public ServiceRegistry(){
+
     }
 
     public void register(String data) {

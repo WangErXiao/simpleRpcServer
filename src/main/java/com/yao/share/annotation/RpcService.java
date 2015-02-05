@@ -1,4 +1,4 @@
-package com.yao.annotation;
+package com.yao.share.annotation;
 
 import org.springframework.stereotype.Component;
 

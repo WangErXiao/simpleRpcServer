@@ -1,5 +1,7 @@
-package com.yao.server;
+package com.yao.server.handler;
 
+import com.yao.share.model.RpcRequest;
+import com.yao.share.model.RpcResponse;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

@@ -1,4 +1,4 @@
-package com.yao.server;
+package com.yao.share.model;
 
 /**
  * Created by root on 15-2-5.

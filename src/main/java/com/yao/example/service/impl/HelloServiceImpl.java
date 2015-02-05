@@ -1,7 +1,7 @@
-package com.yao.service.impl;
+package com.yao.example.service.impl;
 
-import com.yao.service.HelloService;
-import com.yao.annotation.RpcService;
+import com.yao.example.service.HelloService;
+import com.yao.share.annotation.RpcService;
 
 /**
  * Created by root on 15-2-5.
@@ -12,6 +12,6 @@ public class HelloServiceImpl implements HelloService {
     public String hello(String word) {
         System.out.println(word);
 
-        return word;
+        return "reply to consumer:"+word;
     }
 }
