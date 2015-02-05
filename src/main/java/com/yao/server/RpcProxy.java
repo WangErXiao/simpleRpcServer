@@ -1,6 +1,9 @@
 package com.yao.server;
 
 import com.yao.registry.ServiceDiscovery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -10,8 +13,12 @@ import java.util.UUID;
 /**
  * Created by root on 15-2-5.
  */
+@Component
 public class RpcProxy {
+    @Value("${server.address}")
     private String serverAddress;
+
+    @Autowired
     private ServiceDiscovery serviceDiscovery;
 
     public RpcProxy(String serverAddress) {
@@ -48,7 +55,7 @@ public class RpcProxy {
                         RpcClient client = new RpcClient(host, port); // 初始化 RPC 客户端
                         RpcResponse response = client.send(request); // 通过 RPC 客户端发送 RPC 请求并获取 RPC 响应
 
-                        if (response.getError()!=null) {
+                        if (response.getError() != null) {
                             throw response.getError();
                         } else {
                             return response.getResult();

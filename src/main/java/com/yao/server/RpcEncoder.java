@@ -8,7 +8,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
  * Created by root on 15-2-5.
  */
-public class RpcEncoder  extends MessageToByteEncoder {
+public class RpcEncoder extends MessageToByteEncoder {
     private Class<?> genericClass;
 
 

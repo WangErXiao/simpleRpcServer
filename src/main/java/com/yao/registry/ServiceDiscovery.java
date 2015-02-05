@@ -6,6 +6,8 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by root on 15-2-5.
  */
+@Component
 public class ServiceDiscovery {
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceDiscovery.class);
 
@@ -22,8 +25,15 @@ public class ServiceDiscovery {
 
     private volatile List<String> dataList = new ArrayList<String>();
 
+    @Value("${registry.address}")
     private String registryAddress;
 
+    public ServiceDiscovery(){
+        ZooKeeper zk = connectServer();
+        if (zk != null) {
+            watchNode(zk);
+        }
+    }
     public ServiceDiscovery(String registryAddress) {
         this.registryAddress = registryAddress;
 

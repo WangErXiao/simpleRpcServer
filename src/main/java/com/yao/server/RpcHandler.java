@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by root on 15-2-5.
  */
-public class RpcHandler  extends SimpleChannelInboundHandler<RpcRequest> {
+public class RpcHandler extends SimpleChannelInboundHandler<RpcRequest> {
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcHandler.class);
 
     private final Map<String, Object> handlerMap;

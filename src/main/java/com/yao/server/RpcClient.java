@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by root on 15-2-5.
  */
-public class RpcClient  extends SimpleChannelInboundHandler<RpcResponse> {
+public class RpcClient extends SimpleChannelInboundHandler<RpcResponse> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcClient.class);
 

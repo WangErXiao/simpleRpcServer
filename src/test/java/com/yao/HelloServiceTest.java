@@ -1,6 +1,7 @@
 package com.yao;
 
 import com.yao.server.RpcProxy;
+import com.yao.server.RpcServer;
 import com.yao.service.HelloService;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class HelloServiceTest {
 
     @Autowired
     private RpcProxy rpcProxy;
+
 
     @Test
     public void helloTest() {

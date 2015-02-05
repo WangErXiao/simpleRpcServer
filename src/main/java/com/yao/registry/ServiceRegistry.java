@@ -5,32 +5,33 @@ import org.apache.zookeeper.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by root on 15-2-5.
  */
+@Component
 public class ServiceRegistry {
 
-    private static final Logger LOGGER= LoggerFactory.getLogger(ServiceRegistry.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceRegistry.class);
 
-    private CountDownLatch latch=new CountDownLatch(1);
+    private CountDownLatch latch = new CountDownLatch(1);
 
 
-    /*@Value("${registry.address}")*/
+    @Value("${registry.address}")
     private String registryAddress;
 
-    public ServiceRegistry(String registryAddress){
-        this.registryAddress=registryAddress;
+    public ServiceRegistry(String registryAddress) {
+        this.registryAddress = registryAddress;
     }
 
-    public void register(String data){
-        if(data!=null){
-            ZooKeeper zooKeeper=connectServer();
-            if(zooKeeper!=null){
-                createNode(zooKeeper,data);
+    public void register(String data) {
+        if (data != null) {
+            ZooKeeper zooKeeper = connectServer();
+            if (zooKeeper != null) {
+                createNode(zooKeeper, data);
             }
         }
 

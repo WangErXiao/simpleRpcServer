@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by root on 15-2-5.
  */
-public class RpcDecoder extends ByteToMessageDecoder{
+public class RpcDecoder extends ByteToMessageDecoder {
     private Class<?> genericClass;
 
     public RpcDecoder(Class<?> genericClass) {
